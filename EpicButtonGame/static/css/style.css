@@ -1,0 +1,27 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+   }
+   
+   #wrapper{
+       width: 970px;
+       /* background: rgb(38, 81, 117); */
+       margin: 0px auto;
+   }
+
+   #epic{
+       color: white;
+       background-color: blue;
+       padding: 20px;
+       border: solid black;
+       border-radius: 5px;
+   }
+
+   #reset{
+       color: white;
+       background-color: red;
+       padding: 8px;
+       border: solid black;
+       border-radius: 5px;
+   }

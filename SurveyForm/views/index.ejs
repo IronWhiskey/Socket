@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        
+        var socket = io();
+        $(document).ready(function(){
+
+            socket.on('info', function (data) {
+                var name = data.msg.name;
+                var location = data.msg.location;
+                var language = data.msg.language;
+                var comment = data.msg.comment;
+                var num = data.msg.random;
+                $('#data').append("<div id='new'><p> You emitted the following information to the </p>");
+                $('#new').append(`<p> server. { name: ${name}, location: </p>`);
+                $('#new').append(`<p> ${location}, language: ${language} ....</p>`);
+                $('#new').append(`<p> comment: ${comment}</p>`);
+                $('#new').append(`Your lucky number emmited by the server is ${num}!`);
+            });
+
+            // this is another way to trigger the socket emit using jquery, does the same as  the function below
+            // $("form").submit(function(event){
+            //     event.preventDefault()
+            //     var info = {
+            //     name: form.name.value,
+            //     location: form.location.value,
+            //     language: form.language.value,
+            //     comment: form.comment.value
+            //     }
+            //     console.log(1);
+            //     socket.emit('submitForm', { info });
+            // })
+            
+        });
+
+        function myFunction(form) {
+            var info = {
+                name: form.name.value,
+                location: form.location.value,
+                language: form.language.value,
+                comment: form.comment.value
+            }
+            socket.emit('submitForm', { info });
+        }
+
+    </script>
+
+</head>
+    <body>
+        <div id='wrapper'> 
+            
+            <div id='data'></dv>
+
+            <h1>Survey Form</h1>
+            <form id='form'>
+                <table>
+                    <tr>
+                        <td><label>Your Name:</label></td>
+                        <td><input type='text' name='name' id='name'></td>
+                    </tr>
+                    <tr>
+                        <td><label>Dojo Location:</label></td>
+                        <td><input type='text' name='location'></td>
+                    </tr>
+                    <tr>
+                        <td><label>Favorite Language:</label></td>
+                        <td><input type='text' name='language'></td>
+                    </tr>
+                    <tr>
+                        <td><label>Comment:</label></td>
+                        <td><input type='text' name='comment'></td>
+                    </tr>
+                    <tr>
+                        <!-- <td colspan="2"><input type="submit"></td> -->
+                        <td colspan="2"><button onclick="event.preventDefault(); myFunction(this.form)">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </body>
+</html>

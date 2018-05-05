@@ -1,0 +1,17 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+   }
+   
+   #wrapper{
+       width: 970px;
+       /* background: rgb(38, 81, 117); */
+       margin: 0px auto;
+   }
+
+   #new{
+       width: 350px;
+       background-color: cadetblue;
+       padding: 10px;
+   }
