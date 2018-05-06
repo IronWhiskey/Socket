@@ -1,0 +1,31 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper{
+    height: 1000px;
+    text-align: center;
+    /* vertical-align: middle; */
+}
+
+
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.pink{
+    background-color: pink;
+}
+
+#epic{
+    width: 150px;
+    color: black;
+    padding: 20px;
+    border: solid black;
+    border-radius: 5px;
+    margin-top: 200px;  
+}

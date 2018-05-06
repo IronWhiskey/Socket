@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+
+            // --- setting up socket io functionality emitters and listeners ---
+            var socket = io();
+            $(document).ready(function(){
+
+                socket.on('info', function (data) {
+                    $("#wrapper").attr("class",data.msg.color);
+                });
+
+            });
+
+            function updateColor(input) {
+                var data = {
+                    color: input
+                }
+                socket.emit('updateColor', {msg: data});
+            }
+            
+        </script>
+        
+    </head>
+
+    <body>
+        <div id='wrapper' class='na'> 
+            
+            <button id='epic' onclick="event.preventDefault(); updateColor('green')">Green</button>
+            <button id='epic' onclick="event.preventDefault(); updateColor('blue')">Blue</button>
+            <button id='epic' onclick="event.preventDefault(); updateColor('pink')">Pink</button>
+            
+        </div>
+    </body>
+</html>
